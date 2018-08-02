@@ -32,7 +32,7 @@ var canvas = d3.select("#network"),
       .id(function (d) { return d.name; }));
 
 
-d3.json("VotacionesSenado2017.json", function (err, graph) {
+d3.json("https://s3.amazonaws.com/ucb-mids/prod/W209+Visualizing+and+Communicating+Data/Summer+2017+(Revision)/Unit+13/citationsNetwork.json", function (err, graph) {
   if (err) throw err;
 
   simulation.nodes(graph.nodes);
@@ -90,7 +90,7 @@ function dragended() {
 
 function drawNode(d) {
   ctx.beginPath();
-  ctx.fillStyle = color(d.party);
+  ctx.fillStyle = color(d.value);
   ctx.moveTo(d.x, d.y);
   ctx.arc(d.x, d.y, r, 0, Math.PI*2);
   ctx.fill();
